@@ -142,7 +142,7 @@ def diff_crop(F, x1, y1, x2, y2, ph, pw):
     theta_row2 = torch.cat((d,e,f),dim=2)
     theta = torch.cat((theta_row1, theta_row2),dim=1).cuda()
     size = torch.Size((bs,ch,pw,ph))
-    grid = torch.nn.functional.affine_grid(theta, size)
+    grid = torch.nn.functional.affine_grid(theta, size, align_corners=True)
     patch = torch.nn.functional.grid_sample(F,grid, align_corners=True)
     return patch
 
