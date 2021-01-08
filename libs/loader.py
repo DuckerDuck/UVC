@@ -86,10 +86,6 @@ class VidListv1(torch.utils.data.Dataset):
 
         def __getitem__(self, idx):
                 while True:
-                        if len(self.list) - 1 < idx:
-                            print(len(self.list), idx)
-                            raise Exception("Out of range")
-
                         video_ = self.list[idx]
                         frame_end = video_frame_counter(video_)-1
                         if frame_end <=0:
